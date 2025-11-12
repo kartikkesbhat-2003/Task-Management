@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getTaskById, updateTaskStatus } from '../services/operations/taskAPI'
 import MainLayout from '../components/MainLayout'
 import Button from '../components/Button'
+import TaskForm from '../components/TaskForm'
 import { useAuth } from '../contexts/AuthContext'
 
 export default function TaskDetails() {
   const { id } = useParams()
   const [task, setTask] = useState(null)
+  const [editing, setEditing] = useState(null)
   const navigate = useNavigate()
   const { user } = useAuth()
   const isAdmin = user?.role === 'admin'
@@ -45,6 +47,19 @@ export default function TaskDetails() {
       }
     } catch (err) {
       alert('Failed to update status')
+    }
+  }
+
+  const handleSaved = async () => {
+    try {
+      const result = await getTaskById(id)
+      if (result.success) {
+        setTask(result.data)
+      }
+    } catch (err) {
+      // ignore – keep existing task
+    } finally {
+      setEditing(null)
     }
   }
 
@@ -92,6 +107,15 @@ export default function TaskDetails() {
                   onClick={toggleStatus}
                 >
                   {task.status === 'pending' ? 'Mark Complete' : 'Reopen Task'}
+                </Button>
+              )}
+              {isAdmin && (
+                <Button
+                  variant="outline"
+                  size="md"
+                  onClick={() => setEditing(task)}
+                >
+                  Edit
                 </Button>
               )}
             </div>
@@ -248,6 +272,9 @@ export default function TaskDetails() {
           </div>
         </div>
       </div>
+      {editing && isAdmin && (
+        <TaskForm task={editing} onClose={() => setEditing(null)} onSaved={handleSaved} />
+      )}
     </MainLayout>
   )
 }

@@ -10,8 +10,9 @@ const app = express();
 // Configure CORS to allow specific client origins. Add additional origins
 // via the CLIENT_URL env var or by extending the list below.
 const allowedOrigins = [
-  process.env.CLIENT_URL, 
-  'https://task-management-1-wioc.onrender.com'
+  process.env.CLIENT_URL,
+  'https://task-management-1-wioc.onrender.com',
+  // 'http://localhost:5173'
 ].filter(Boolean)
 
 app.use(

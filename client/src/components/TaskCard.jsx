@@ -154,9 +154,32 @@ export default function TaskCard({ task, onEdit, onRefresh, onDragStart, onDragE
         )}
       </div>
 
-      {/* On very small screens show a compact actions menu (single button) */}
-      <div className="sm:hidden ml-2 flex items-center">
-        <Button variant="ghost" size="icon-sm" onClick={(e) => { e.stopPropagation(); navigate(`/tasks/${task._id}`); }} title="Open task">
+      {/* On very small screens show compact action buttons */}
+      <div className="sm:hidden ml-2 flex items-center gap-2">
+        {isAdmin && onEdit && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={(e) => {
+              e.stopPropagation()
+              onEdit()
+            }}
+            title="Edit task"
+            className="text-slate-500 hover:text-slate-700"
+          >
+            ✎
+          </Button>
+        )}
+
+        <Button
+          variant="ghost"
+          size="icon-sm"
+          onClick={(e) => {
+            e.stopPropagation()
+            navigate(`/tasks/${task._id}`)
+          }}
+          title="Open task"
+        >
           →
         </Button>
       </div>
