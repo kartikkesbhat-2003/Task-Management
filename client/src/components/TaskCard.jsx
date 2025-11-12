@@ -103,22 +103,22 @@ export default function TaskCard({ task, onEdit, onRefresh, onDragStart, onDragE
         <h3 className="text-sm font-semibold text-slate-900 truncate">{task.title}</h3>
       </div>
 
-      {/* Due Date */}
-      <span className="text-xs text-slate-600 whitespace-nowrap">
+      {/* Due Date (hidden on very small screens) */}
+      <span className="hidden sm:inline-flex text-xs text-slate-600 whitespace-nowrap">
         {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'No date'}
       </span>
 
-      {/* Status Badge */}
+      {/* Status Badge (hidden on very small screens) */}
       <span
-        className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap ${
+        className={`hidden sm:inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold whitespace-nowrap ${
           task.status === 'pending' ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700'
         }`}
       >
         {task.status === 'pending' ? 'Pending' : 'Completed'}
       </span>
 
-      {/* Actions */}
-      <div className="flex items-center gap-1">
+      {/* Actions (condensed/hide on xs) */}
+      <div className="hidden sm:flex items-center gap-1">
         {canUpdateStatus && (
           <Button
             variant="ghost"
@@ -152,6 +152,13 @@ export default function TaskCard({ task, onEdit, onRefresh, onDragStart, onDragE
             ×
           </Button>
         )}
+      </div>
+
+      {/* On very small screens show a compact actions menu (single button) */}
+      <div className="sm:hidden ml-2 flex items-center">
+        <Button variant="ghost" size="icon-sm" onClick={(e) => { e.stopPropagation(); navigate(`/tasks/${task._id}`); }} title="Open task">
+          →
+        </Button>
       </div>
     </article>
   )

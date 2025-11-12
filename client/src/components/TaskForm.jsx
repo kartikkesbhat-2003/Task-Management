@@ -84,7 +84,7 @@ export default function TaskForm({ task = {}, onClose, onSaved }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 px-4 py-6 backdrop-blur-sm" role="dialog" aria-modal="true">
       <form
-        className="w-full max-w-xl rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
+        className="w-full max-w-md lg:max-w-xl rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
         onSubmit={handleSubmit}
       >
         <div className="flex items-start justify-between gap-4">

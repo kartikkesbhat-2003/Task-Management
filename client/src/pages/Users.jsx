@@ -340,20 +340,20 @@ export default function Users() {
         </div>
 
         {/* Summary */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-2xl border border-primary/20 bg-primary/10 p-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-2xl border border-primary/20 bg-primary/10 p-3 sm:p-4">
             <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total Users</span>
-            <p className="mt-2 text-2xl font-semibold text-slate-900">{users.length}</p>
+            <p className="mt-2 text-xl sm:text-2xl font-semibold text-slate-900">{users.length}</p>
           </div>
-          <div className="rounded-2xl border border-purple-200 bg-purple-50 p-4">
+          <div className="rounded-2xl border border-purple-200 bg-purple-50 p-3 sm:p-4">
             <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Admins</span>
-            <p className="mt-2 text-2xl font-semibold text-slate-900">
+            <p className="mt-2 text-xl sm:text-2xl font-semibold text-slate-900">
               {users.filter((u) => u.role === 'admin').length}
             </p>
           </div>
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3 sm:p-4">
             <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Regular Users</span>
-            <p className="mt-2 text-2xl font-semibold text-slate-900">
+            <p className="mt-2 text-xl sm:text-2xl font-semibold text-slate-900">
               {users.filter((u) => u.role === 'user').length}
             </p>
           </div>

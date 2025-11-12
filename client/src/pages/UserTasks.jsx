@@ -92,18 +92,18 @@ export default function UserTasks() {
           </div>
 
           {/* Summary Cards */}
-          <div className="mt-6 grid gap-4 text-sm sm:grid-cols-3">
-            <div className="flex flex-col gap-2 rounded-2xl border border-primary/20 bg-primary/10 p-4 shadow-sm">
+          <div className="mt-6 grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
+            <div className="flex flex-col gap-2 rounded-2xl border border-primary/20 bg-primary/10 p-3 sm:p-4 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Total Tasks</span>
-              <span className="text-2xl font-semibold text-slate-900">{tasks.length}</span>
+              <span className="text-xl sm:text-2xl font-semibold text-slate-900">{tasks.length}</span>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 shadow-sm">
+            <div className="flex flex-col gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-3 sm:p-4 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Pending</span>
-              <span className="text-2xl font-semibold text-slate-900">{pendingTasks.length}</span>
+              <span className="text-xl sm:text-2xl font-semibold text-slate-900">{pendingTasks.length}</span>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 shadow-sm">
+            <div className="flex flex-col gap-2 rounded-2xl border border-emerald-200 bg-emerald-50 p-3 sm:p-4 shadow-sm">
               <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">Completed</span>
-              <span className="text-2xl font-semibold text-slate-900">{completedTasks.length}</span>
+              <span className="text-xl sm:text-2xl font-semibold text-slate-900">{completedTasks.length}</span>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function UserTasks() {
               </header>
 
               {pendingTasks.length > 0 ? (
-                <div className="max-h-[calc(100vh-28rem)] space-y-3 overflow-y-auto pr-2 scrollbar-hide">
+                <div className="space-y-3 overflow-y-auto pr-2 scrollbar-hide max-h-[60vh] lg:max-h-[calc(100vh-28rem)]">
                   {pendingTasks.map((task) => (
                     <TaskCard
                       key={task._id}
@@ -159,7 +159,7 @@ export default function UserTasks() {
               </header>
 
               {completedTasks.length > 0 ? (
-                <div className="max-h-[calc(100vh-28rem)] space-y-3 overflow-y-auto pr-2 scrollbar-hide">
+                <div className="space-y-3 overflow-y-auto pr-2 scrollbar-hide max-h-[60vh] lg:max-h-[calc(100vh-28rem)]">
                   {completedTasks.map((task) => (
                     <TaskCard
                       key={task._id}

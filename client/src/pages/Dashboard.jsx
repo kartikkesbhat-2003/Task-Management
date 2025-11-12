@@ -175,16 +175,16 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid grid-cols-2 gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
             {SUMMARY_CARDS.map((card) => {
               const value = card.getValue(stats)
               return (
                 <div
                   key={card.key}
-                  className={`flex flex-col gap-2 rounded-2xl border p-4 shadow-sm ${card.accent}`}
+                  className={`flex flex-col gap-2 rounded-2xl border p-3 sm:p-4 shadow-sm ${card.accent}`}
                 >
                   <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">{card.label}</span>
-                  <span className="text-2xl font-semibold">{value}</span>
+                  <span className="text-xl sm:text-2xl font-semibold">{value}</span>
                 </div>
               )
             })}
@@ -263,7 +263,7 @@ export default function Dashboard() {
                 {loading ? (
                   <p className="text-sm text-slate-500">Loading…</p>
                 ) : columnTasks.length ? (
-                  <div className="space-y-3 max-h-[calc(100vh-28rem)] overflow-y-auto pr-2 scrollbar-hide">
+                  <div className="space-y-3 overflow-y-auto pr-2 scrollbar-hide max-h-[60vh] lg:max-h-[calc(100vh-28rem)]">
                     {columnTasks.map((task) => (
                       <TaskCard
                         key={task._id}
